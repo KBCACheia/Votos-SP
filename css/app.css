@@ -1,0 +1,125 @@
+.pagina{
+	background-image:url(../images/bg.jpg);
+	background-repeat:repeat-y;
+	background-position:center;
+}
+
+.ui-header.ui-bar-inherit{
+	background-color:#FF8000;
+	border:none;
+}
+
+.ui-link.ui-btn-left.ui-btn.ui-icon-info.ui-btn-icon-notext.ui-shadow.ui-corner-all{
+	background-color:#FF8000;
+	border:1px solid rgba(0,0,0,.3);
+}
+
+.ui-input-search.ui-shadow-inset.ui-input-has-clear.ui-body-inherit.ui-corner-all{
+	margin-left:auto;
+	margin-right:auto;
+	max-width: 760px;
+	display: block;
+}
+
+#ulCidade{
+	margin:auto;
+	max-width: 800px;
+	display: block;
+	text-transform:capitalize;
+	
+}
+
+#ulCidade a{
+	font-size: 1.4em;
+	
+}
+
+#ulCandidatos{
+	margin:auto;
+	max-width: 800px;
+	display: block;
+	text-transform:capitalize;
+}
+
+/* Classes da lista de candidatos*/
+.divNomeCargo{
+	float:left; 
+	clear:none;
+	text-transform: capitalize;
+	display:block;
+	max-width:50%;
+}
+
+.votoCandidato{
+	text-align:center;
+	margin-top:0;
+	margin-right:25px;
+	float:right; 
+	clear:none;
+	width:40%;
+}
+
+.cargoCandidato{
+	font-size:0.8em;
+}
+
+.nomeCandidato{
+	font-size:1.2em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.votosCandidato{
+	font-size:0.9em;
+}
+
+.idCidade{
+	display:none;
+}
+ /*página perfil do candidato*/
+#perfilCandidatos{
+	text-align:center;
+	text-transform: capitalize;
+}
+
+#nome{
+	margin-top:-20px;
+}
+
+#tbPerfil{
+	max-width:800px;
+	margin:auto;
+}
+
+#tbPerfil th {
+    background-color: #ddd;
+}
+
+#pesquisar{
+	max-width:200px;
+	margin:20px auto;
+}
+
+#pesquisar img{
+	height:50px;
+	margin:-20px 0;
+	margin-left:-30px;
+}
+
+/*iframe*/
+#iframe{
+	width:100%;
+}
+ 
+ .descricao img{
+	height: 48px;
+	padding-right: 10px;
+	float: left;
+}
+
+.descricao div{
+	padding-top: 14px;
+	font-size: 18px;
+	font-weight: bold;
+}
+ 
