@@ -110,6 +110,19 @@
 #iframe{
 	width:100%;
 }
+
+#ulPesquisa{
+	margin:auto;
+	max-width: 800px;
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+#mais{
+	max-width:200px;
+	margin:20px auto;
+}
  
  .descricao img{
 	height: 48px;

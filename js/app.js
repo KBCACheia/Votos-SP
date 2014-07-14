@@ -2,13 +2,15 @@ $(function(){
 	var cidades=[];
 	var votos=[];
 	var segTurno=[];
-	$.ajax({
-			url : "js/cidades.csv", /*Lê o CSV das Cidades*/
-			success : function(result){
-				cidades = $.csv.toObjects(result);
-				onReady();
-			}
-		});
+	var index=1;
+	
+		$.ajax({
+				url : "js/cidades.csv", /*Lê o CSV das Cidades*/
+				success : function(result){
+					cidades = $.csv.toObjects(result);
+					onReady();
+				}
+			});
 	
 	function onReady(){ /*Cria a lista de cidades*/
 		var listaCidades="";
@@ -70,16 +72,47 @@ $(function(){
 						}
 					}
 			});
-			
 			$("#pesquisar").click(function(){
-				var word = $('#nome').first().text();
-				word = word.replace(/\ /g,"+");
-				word = word.replace(/[áàâã]/g,'a').replace(/[éèê]/g,'e').replace(/[óòôõ]/g,'o').replace(/[úùû]/g,'u');
-				console.log(word);
-				$('#iframe').attr('src', "https://www.google.com.br/#q="+word+"&output=embed");
+				index=1;
+				pesquisarGoogle(index);				
 				$.mobile.changePage( "#search", { transition: "flip"});
 			});
 			
+			function pesquisarGoogle(lista){
+				var googleAPIKey = "AIzaSyCx7aZEJFzihKvKPcDpREujqf9aZzeFLr0";
+				var customSearchId = "000615102873566374198:cmpphtodzee";;
+				var url = 'https://www.googleapis.com/customsearch/v1?key=' + googleAPIKey + '&cx=' + customSearchId + '&num=10';
+				var word = $('#nome').first().text();
+				word = word.replace(/\ /g,"+");
+				word = word.replace(/[áàâã]/g,'a').replace(/[éèê]/g,'e').replace(/[óòôõ]/g,'o').replace(/[úùû]/g,'u');
+				console.log(lista);
+				query(word, lista);
+				function query(text, page){
+					var endpoint = url + '&start=' + page + '&q=' + text;
+					$.get(endpoint, function(response){
+						var results = [];
+						for(var i = 0; i < response.items.length; i++){
+							var result = {
+								title: response.items[i].title,
+								link: response.items[i].link,
+								snippet: response.items[i].snippet,
+							};
+							results.push(result);
+							$('#ulPesquisa').append('<li class="ui-first-child"><a href='+result.link+' class="ui-btn ui-btn-icon-right ui-icon-carat-r" target="_blank" style="padding:10px 10px">'+result.title+'<p>'+result.snippet+'</li>');;
+						}
+					});
+				}
+				
+				$('a').on('click', function(e){
+				   e.preventDefault();
+				   window.open($(this).attr('href'), '_blank', 'location=yes');
+				});
+			}
+			
+			$("#mais").click(function(){
+				index=index+10;
+				pesquisarGoogle(index);				
+			});
 			
 			function votosSegTurno(index){ /*Expõe os votos do segundo turno*/
 				var nVotos=[];
@@ -96,12 +129,7 @@ $(function(){
 					}
 				}
 				return nVotos;
-			}
+			}				
 			
-			
-		}
-		
-		
-	
-	
+		}	
 });
